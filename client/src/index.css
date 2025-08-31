@@ -3,3 +3,14 @@ body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
 }
+
+.primary{
+  background-color: navy;
+  padding: 5px 20px;
+  color: white;
+  border: none;
+}
+
+body, html{
+  overflow-x: hidden;
+}
