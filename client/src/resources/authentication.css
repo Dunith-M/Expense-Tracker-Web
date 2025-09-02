@@ -2,7 +2,7 @@
     height: 400px;
 }
 
-.register{
+.register, .login{
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -10,7 +10,9 @@
     background-image: linear-gradient(to right, #30cfd0 0%, #330867 100%);
 }
 
-.register input{
+
+
+.register input, .login input{
     background-color: transparent;
     border: none;
     color: black;
@@ -26,7 +28,7 @@ label{
     color: white !important;
 }
 
-.register h1{
+.register h1, .login h1{
     color: white;
     font-size: 25px;
 }

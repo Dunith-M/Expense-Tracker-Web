@@ -1,7 +1,8 @@
 import React from "react";
 import { Form } from "antd";
 import Input from "antd/lib/input/Input";
-import Link from "antd/lib/typography/Link";
+//import Link from "antd/lib/typography/Link";
+import { Link } from "react-router-dom"; 
 import '../resources/authentication.css';
 
 function Register() {
