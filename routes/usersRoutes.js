@@ -4,15 +4,15 @@ const router = express.Router();
 
 router.post('/login', async (req, res) => {
     try {
-        const result = User.findOne({email: req.body.email , password: req.body.password});
+        const result = await User.findOne({email: req.body.email , password: req.body.password});
 
     if(result){
-        res.send(result);
+        res.json(result);
     } else {
-        res.status(500).json('Error');
+        res.status(401).json({ message: "Invalid email or password" }); 
     }
     } catch (error) {
-        console.log(500).json('Error');
+        res.status(500).json({ message: "Server error", error: error.message });
     }
     
 });
@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
         res.send("User Registered Successfully");
 
     } catch (error) {
-        console.log(500).json('Error');
+        res.status(500).json({ message: "Server error", error: error.message });
     }
     
 });
