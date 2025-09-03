@@ -1,33 +1,37 @@
 import React from "react";
-import { Form, message } from "antd";
+import { Form } from "antd";
 import Input from "antd/lib/input/Input";
 //import Link from "antd/lib/typography/Link";
-import { Link, useNavigate } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
 import "../resources/authentication.css";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
+
 
 function Login() {
   const navigate = useNavigate();
-  const onFinish = async(values) => {
+  const onFinish = async (values) => {
     try {
-      
       const response = await axios.post("/api/users/login", values);
       localStorage.setItem(
         "expense-tracker-web",
         JSON.stringify({ ...response.data, password: "" })
       );
+
+        toast.success("Login Successfull");
+        navigate("/");
+
+      } catch (error) {
+        toast.error("Something went wrong");
+
+      }
       
-      message.success("Login Successfull");
-      navigate("/");
-      
-    } catch (error) {
-      message.error("Something went wrong");
-      
-    }
   };
 
   return (
     <div className="login">
+
       <div className="row justify-content-center align-items-center w-100 h-100">
         <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>
