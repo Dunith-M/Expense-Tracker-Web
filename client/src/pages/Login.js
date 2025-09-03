@@ -6,8 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../resources/authentication.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
-
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,19 +18,15 @@ function Login() {
         JSON.stringify({ ...response.data, password: "" })
       );
 
-        toast.success("Login Successfull");
-        navigate("/");
-
-      } catch (error) {
-        toast.error("Something went wrong");
-
-      }
-      
+      toast.success("Login Successfull");
+      navigate("/");
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
 
   return (
     <div className="login">
-
       <div className="row justify-content-center align-items-center w-100 h-100">
         <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>

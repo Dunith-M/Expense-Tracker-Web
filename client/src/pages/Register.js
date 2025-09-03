@@ -1,41 +1,34 @@
 import React from "react";
-import { Form} from "antd";
+import { Form } from "antd";
 import Input from "antd/lib/input/Input";
 //import Link from "antd/lib/typography/Link";
-import { Link } from "react-router-dom"; 
-import '../resources/authentication.css';
+import { Link } from "react-router-dom";
+import "../resources/authentication.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
-
-
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
-
-  const onFinish = async(values)=>{
+  const onFinish = async (values) => {
     try {
-      
       await axios.post("/api/users/register", values);
       toast.success("Registration Successfull");
-      
     } catch (error) {
       toast.error("Something went wrong");
-      
     }
-  }
+  };
 
   return (
     <div className="register">
-      
       <div className="row justify-content-center align-items-center w-100 h-100">
         <div className="col-md-5">
           <div className="lottie">
             <dotlottie-wc
-            src="https://lottie.host/42b57495-000f-418f-a755-5a0075d64cfd/JkdgYoBq7Z.lottie"
-            speed="1"
-            autoplay
-            loop
-          ></dotlottie-wc>
+              src="https://lottie.host/42b57495-000f-418f-a755-5a0075d64cfd/JkdgYoBq7Z.lottie"
+              speed="1"
+              autoplay
+              loop
+            ></dotlottie-wc>
           </div>
         </div>
 
@@ -56,7 +49,9 @@ function Register() {
 
             <div className="d-flex justify-content-between align-items-center">
               <Link to="/login">Already Registered, Click here to Login</Link>
-              <button className="primary" type="submit">REGISTER</button>
+              <button className="primary" type="submit">
+                REGISTER
+              </button>
             </div>
           </Form>
         </div>
