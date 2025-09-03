@@ -1,13 +1,29 @@
 import React from "react";
-import { Form } from "antd";
+import { Form, message } from "antd";
 import Input from "antd/lib/input/Input";
 //import Link from "antd/lib/typography/Link";
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom"; 
 import "../resources/authentication.css";
+import axios from "axios";
 
 function Login() {
-  const onFinish = (values) => {
-    console.log(values);
+  const navigate = useNavigate();
+  const onFinish = async(values) => {
+    try {
+      
+      const response = await axios.post("/api/users/login", values);
+      localStorage.setItem(
+        "expense-tracker-web",
+        JSON.stringify({ ...response.data, password: "" })
+      );
+      
+      message.success("Login Successfull");
+      navigate("/");
+      
+    } catch (error) {
+      message.error("Something went wrong");
+      
+    }
   };
 
   return (
