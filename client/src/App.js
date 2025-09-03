@@ -5,10 +5,15 @@ import Test from "./pages/Test";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+// ✨ Toastify (global notifications)
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/test" element={<Test />} />

@@ -1,10 +1,14 @@
 import React from "react";
-import { Form, message } from "antd";
+import { Form} from "antd";
 import Input from "antd/lib/input/Input";
 //import Link from "antd/lib/typography/Link";
 import { Link } from "react-router-dom"; 
 import '../resources/authentication.css';
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
+
+
 
 function Register() {
 
@@ -12,10 +16,10 @@ function Register() {
     try {
       
       await axios.post("/api/users/register", values);
-      message.success("Registration Successfull");
+      toast.success("Registration Successfull");
       
     } catch (error) {
-      message.error("Something went wrong");
+      toast.error("Something went wrong");
       
     }
   }
