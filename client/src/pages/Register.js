@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "antd";
 import Input from "antd/lib/input/Input";
-//import Link from "antd/lib/typography/Link";
 import { Link } from "react-router-dom";
 import "../resources/authentication.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../components/Spinner";
 
 function Register() {
+  const [loading, setLoading] = useState(false);
   const onFinish = async (values) => {
     try {
+      setLoading(true);
       await axios.post("/api/users/register", values);
       toast.success("Registration Successfull");
+      setLoading(false);
     } catch (error) {
       toast.error("Something went wrong");
+      setLoading(false);
     }
   };
 
   return (
     <div className="register">
+      {loading && <Spinner />}
       <div className="row justify-content-center align-items-center w-100 h-100">
         <div className="col-md-5">
           <div className="lottie">

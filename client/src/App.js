@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
 import Login from "./pages/Login";
@@ -23,6 +23,17 @@ function App() {
       </BrowserRouter>
     </div>
   );
+}
+
+export function ProtectedRoute(props){
+
+  if(localStorage.getItem('sheymoney-udemy-user'))
+  {
+    return props.children
+  }else{
+   return <Navigate to='/login'/>
+  }
+
 }
 
 export default App;
