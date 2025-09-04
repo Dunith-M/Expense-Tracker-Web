@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="/test" element={<ProtectedRoute><Test /></ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
@@ -27,7 +27,7 @@ function App() {
 
 export function ProtectedRoute(props){
 
-  if(localStorage.getItem('sheymoney-udemy-user'))
+  if(localStorage.getItem('expense-tracker-web'))
   {
     return props.children
   }else{
