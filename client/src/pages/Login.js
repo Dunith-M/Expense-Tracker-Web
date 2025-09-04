@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import Input from "antd/lib/input/Input";
 import { Link, useNavigate } from "react-router-dom";
@@ -27,6 +27,12 @@ function Login() {
       toast.error("Something went wrong");
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("expense-tracker-web")) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="login">

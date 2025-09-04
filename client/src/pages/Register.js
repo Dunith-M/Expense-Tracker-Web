@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import Input from "antd/lib/input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../resources/authentication.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../components/Spinner";
 
+
 function Register() {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(true);
   const onFinish = async (values) => {
     try {
       setLoading(true);
@@ -21,6 +23,13 @@ function Register() {
       setLoading(false);
     }
   };
+
+
+useEffect(() => {
+    if (localStorage.getItem("expense-tracker-web")) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="register">
